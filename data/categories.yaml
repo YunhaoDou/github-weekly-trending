@@ -1,0 +1,55 @@
+# Project type categorization rules.
+#
+# Each category has keywords (matched against name, description, topics)
+# and topics (matched against GitHub topics).
+# Higher weight = stronger signal. Category with highest cumulative score wins.
+# Order in this file is the tie-break priority (earlier wins).
+
+categories:
+  - name: "LLM / Agent"
+    keywords: [llm, gpt, agent, agents, claude, chatgpt, langchain, autogpt, mcp, rag, embedding, embeddings, fine-tuning, ollama, vllm, anthropic]
+    topics: [llm, gpt, agent, langchain, claude, mcp, ai-agent, anthropic, openai]
+
+  - name: "AI / ML"
+    keywords: [machine-learning, deep-learning, neural-network, tensorflow, pytorch, transformer, diffusion, classification, computer-vision, nlp, reinforcement-learning, training, model]
+    topics: [machine-learning, deep-learning, neural-network, pytorch, tensorflow, ai, ml, computer-vision, nlp]
+
+  - name: "Web Framework"
+    keywords: [react, vue, svelte, nextjs, nuxt, framework, frontend, backend, fullstack, ssr, spa, web-framework]
+    topics: [react, vue, svelte, nextjs, nuxt, frontend, backend, web-framework, fullstack]
+
+  - name: "CLI / DevTool"
+    keywords: [cli, command-line, terminal, tool, scripting, productivity, automation, shell, tui]
+    topics: [cli, devtool, terminal, command-line-tool, productivity]
+
+  - name: "DevOps / Infra"
+    keywords: [kubernetes, docker, terraform, helm, ansible, ci-cd, deployment, container, infrastructure, observability, monitoring, sre]
+    topics: [devops, kubernetes, docker, terraform, infrastructure, sre, observability]
+
+  - name: "Database / Storage"
+    keywords: [database, sql, nosql, vector-database, redis, postgres, mysql, mongodb, sqlite, duckdb, clickhouse, storage]
+    topics: [database, sql, nosql, vector-database, postgres, mysql, redis]
+
+  - name: "Security"
+    keywords: [security, pentest, vulnerability, exploit, malware, cve, hacking, encryption, cryptography, audit]
+    topics: [security, cybersecurity, pentesting, hacking, cryptography]
+
+  - name: "Data / Analytics"
+    keywords: [data-engineering, analytics, etl, pipeline, dashboard, visualization, bi, warehouse, polars, pandas, dbt]
+    topics: [data-science, data-engineering, analytics, etl, visualization, dashboard]
+
+  - name: "Mobile"
+    keywords: [ios, android, react-native, flutter, mobile, swift, kotlin]
+    topics: [ios, android, react-native, flutter, swift, kotlin, mobile]
+
+  - name: "Game / Graphics"
+    keywords: [game, gaming, godot, unity, unreal, rendering, shader, graphics, opengl, vulkan]
+    topics: [game, gamedev, godot, unity, graphics, rendering, shader]
+
+  - name: "Learning Resource"
+    keywords: [awesome, list, learn, tutorial, books, roadmap, interview, course, guide, cheatsheet, free, education]
+    topics: [awesome, awesome-list, learning, tutorial, roadmap, education, interview]
+
+  - name: "Other"
+    keywords: []
+    topics: []
