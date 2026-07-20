@@ -1,12 +1,18 @@
-name: Daily snapshot
+name: Update trending
 
 on:
   schedule:
-    - cron: '0 0 * * *'   # 00:00 UTC every day
+    - cron: '0 0 * * *'   # Daily 00:00 UTC
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'data/categories.yaml'
+      - 'scripts/**'
+      - '.github/workflows/update.yml'
 
 jobs:
-  snapshot:
+  build:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -18,25 +24,21 @@ jobs:
           python-version: '3.12'
 
       - name: Install deps
-        run: pip install requests pyyaml
+        run: pip install -r requirements.txt
 
-      - name: Snapshot
-        run: python scripts/snapshot.py
+      - name: Build README
+        run: python scripts/build.py
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Prune snapshots older than 90 days
-        run: |
-          find snapshots -name "*.json" -mtime +90 -print -delete || true
-
       - name: Commit & push if changed
         run: |
-          if [[ -n "$(git status --porcelain)" ]]; then
+          if [[ -n "$(git status --porcelain README.md)" ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add snapshots/
-            git commit -m "snapshot: $(date -u +%Y-%m-%d)"
+            git add README.md
+            git commit -m "docs: update weekly trending [skip ci]"
             git push
           else
-            echo "No snapshot change."
+            echo "No README change."
           fi
